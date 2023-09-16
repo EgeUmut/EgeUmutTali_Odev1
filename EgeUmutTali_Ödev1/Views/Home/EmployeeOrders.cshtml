@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EgeUmutTali_Ödev1.Models.Order>
+
+@{
+    ViewData["Title"] = "EmployeeOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script>
+    $(document).ready(function () {
+        $.noConflict();
+        $('#myTable').DataTable();
+    });
+
+</script>
+
+<a href="/Home/Index">
+    Go Back
+</a>
+
+<h1>Employee Orders</h1>
+
+<table id="myTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Order Id
+            </th>
+            <th>
+                Order Date
+            </th>
+            <th>
+                Shipping to
+            </th>
+            <th>
+                Employee
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.OrderId
+                </td>
+                <td>
+                    @item.OrderDate.ToString();
+                </td>
+                <td>
+                    @item.ShipCountry
+                </td>
+                <td>
+                    @item.Employee.FirstName  @item.Employee.LastName
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
